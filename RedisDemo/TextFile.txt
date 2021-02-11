@@ -1,0 +1,27 @@
+﻿Instructions:
+    -Download Docker
+    -On the terminal (on Windows use Power Shell) type:
+        docker run my-redis -p 5002:6379 -d redis
+    -Check if docker is running:
+        docker ps -a
+    -Checking redis execution and data:
+        docker exec -it my-redis sh
+        redis-cli
+        ping                                            |expected response: PONG                |
+        select 0                                        |expected response: OK                  |
+        dbsize                                          |expected response: (integer) 0         |
+        scan 0                                          |expected response: 0
+                                                                            (empty array)       |
+    -Deleting Docker:
+        docker ps -a                                    |select the containerID                 |
+        docker stop #containerID_from_previous_step
+        docker rm #containerID_from_previous_step
+        docker ps -a                                    |container should be removed now        |       
+        docker images                                   |select the imageID                     |
+        docker rmi #imageID_from_previous_step
+
+
+
+
+
+        
